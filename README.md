@@ -1,11 +1,14 @@
-<div align="center">
+# Smysluplná Škola - News Signage
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Tato aplikace slouží pro digitální signage (nástěnku) a zobrazuje nejnovější aktuality z webu smysluplnaskola.cz.
 
-  <h1>Built with AI Studio</h2>
+## Vlastnosti
+- Čistý design bez interaktivních prvků (ideální pro TV/displeje).
+- Písmo **Nunito**.
+- Automatická aktualizace dat každých 10 minut.
+- **Proxy Server**: Řeší problém s CORS, aby se data načetla i v prohlížeči.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Nasazení na Vercel
+Pro správné fungování na Vercelu (včetně proxy serveru) doporučujeme nasadit celou tuto složku. Vercel automaticky detekuje Vite.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+Poznámka: Aktuální nastavení používá Express server pro proxy v tomto prostředí. Na Vercelu můžete proxy nastavit i v souboru `vercel.json` pro statické nasazení bez nutnosti Expressu, pokud byste chtěli jen čisté HTML.
