@@ -60,7 +60,7 @@ export default function App() {
   return (
     <div className="h-screen w-screen bg-white text-charcoal flex flex-col overflow-hidden">
       {/* Visual Header */}
-      <div className="w-full bg-[#f6f6f6] border-b border-gray-100 py-4 md:py-8 px-8 md:px-16 flex justify-between items-center shrink-0">
+      <div className="w-full bg-[#f6f6f6] border-b border-gray-100 py-3 md:py-5 px-8 md:px-16 flex justify-between items-center shrink-0">
         <h1 className="text-[10px] md:text-base lg:text-lg font-black uppercase tracking-[0.4em] md:tracking-[0.6em] text-metadata">
           Aktuality ze školních médií
         </h1>
@@ -124,7 +124,7 @@ export default function App() {
       </main>
       
       {/* Static banner with QR Code */}
-      <div className="w-full bg-[#111827] text-white py-4 md:py-8 LG:py-10 px-8 md:px-16 lg:px-20 flex items-center justify-between shrink-0">
+      <div className="w-full bg-[#111827] text-white py-3 md:py-6 px-8 md:px-16 lg:px-20 flex items-center justify-between shrink-0">
         <div className="flex flex-col">
           <h2 className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-[0.2em] mb-1">Více informací na webu</h2>
           <p className="text-gray-400 font-bold uppercase tracking-[0.15em] text-[10px] md:text-sm lg:text-base">smysluplnaskola.cz/skolni-media</p>
@@ -160,10 +160,10 @@ function NewsCard({ post }: { post: NewsPost; index: number }) {
 
   return (
     <div
-      className="flex flex-col md:flex-row h-full w-full bg-white border border-gray-100 rounded-[3rem] overflow-hidden shadow-2xl"
+      className="flex flex-col md:flex-row w-full bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-2xl"
       id={`news-card-${post.id}`}
     >
-      <div className="md:w-1/2 h-full overflow-hidden">
+      <div className="md:w-[45%] aspect-[3/2] md:aspect-auto overflow-hidden">
         <img 
           src={imageUrl} 
           alt={post.title} 
@@ -175,24 +175,24 @@ function NewsCard({ post }: { post: NewsPost; index: number }) {
         />
       </div>
 
-      <div className="flex flex-col p-16 md:p-24 lg:p-32 md:w-1/2 justify-center">
-        <div className="mb-8">
-          <div className="w-3 h-10 bg-brand-red inline-block mr-6 align-middle"></div>
-          <span className="text-base lg:text-lg font-black uppercase tracking-[0.4em] text-metadata align-middle">
+      <div className="flex flex-col p-10 md:p-12 lg:p-16 md:w-[55%] justify-center">
+        <div className="mb-4">
+          <div className="w-1.5 h-6 bg-brand-red inline-block mr-4 align-middle"></div>
+          <span className="text-xs lg:text-sm font-black uppercase tracking-[0.4em] text-metadata align-middle">
             Nepřehlédněte
           </span>
         </div>
         
-        <h2 className="mb-10 font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-charcoal">
+        <h2 className="mb-6 font-sans text-xl sm:text-2xl md:text-2xl lg:text-3xl font-black leading-[1.2] tracking-tight text-charcoal">
           {post.title}
         </h2>
         
-        <p className="mb-12 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed text-metadata/80 line-clamp-4">
+        <p className="mb-8 text-sm sm:text-base md:text-base lg:text-lg font-medium leading-relaxed text-metadata/80 line-clamp-3">
           {stripHtml(post.perex)}
         </p>
         
-        <div className="mt-8 pt-10 border-t-2 border-gray-100">
-          <div className="flex items-center gap-4 text-xl lg:text-2xl font-black text-metadata/60 uppercase tracking-[0.2em]">
+        <div className="mt-4 pt-6 border-t-2 border-gray-100">
+          <div className="flex items-center gap-4 text-lg lg:text-xl font-black text-metadata/60 uppercase tracking-[0.2em]">
             <span>{formatDate(post.date)}</span>
           </div>
         </div>
