@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Loader2 } from 'lucide-react';
-import { QRCodeSVG } from 'qrcode.react';
 import { ApiResponse, NewsPost } from './types';
 
 // Helper to strip HTML tags from perex
@@ -122,34 +121,6 @@ export default function App() {
           </div>
         )}
       </main>
-      
-      {/* Static banner with QR Code */}
-      <div className="w-full bg-[#111827] text-white py-3 md:py-6 px-8 md:px-16 lg:px-20 flex items-center justify-between shrink-0">
-        <div className="flex flex-col">
-          <h2 className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-[0.2em] mb-1">Více novinek ze školy na webu</h2>
-          <p className="text-gray-400 font-bold uppercase tracking-[0.15em] text-[10px] md:text-sm lg:text-base">smysluplnaskola.cz/skolni-media</p>
-        </div>
-        <div className="bg-white p-1.5 md:p-3 rounded-xl lg:rounded-2xl shadow-2xl">
-          <QRCodeSVG 
-            value="https://smysluplnaskola.cz/skolni-media" 
-            size={70}
-            className="md:hidden"
-            level="H"
-          />
-          <QRCodeSVG 
-            value="https://smysluplnaskola.cz/skolni-media" 
-            size={100}
-            className="hidden md:block lg:hidden"
-            level="H"
-          />
-          <QRCodeSVG 
-            value="https://smysluplnaskola.cz/skolni-media" 
-            size={140}
-            className="hidden lg:block"
-            level="H"
-          />
-        </div>
-      </div>
     </div>
   );
 }
