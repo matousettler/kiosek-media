@@ -52,7 +52,7 @@ export default function App() {
     
     const cycleInterval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % posts.length);
-    }, 8000);
+    }, 10000);
     
     return () => clearInterval(cycleInterval);
   }, [posts]);
@@ -60,11 +60,11 @@ export default function App() {
   return (
     <div className="h-screen w-screen bg-white text-charcoal flex flex-col overflow-hidden">
       {/* Visual Header */}
-      <div className="w-full bg-[#f6f6f6] border-b border-gray-100 py-5 px-10 flex justify-between items-center shrink-0">
-        <h1 className="text-xs font-black uppercase tracking-[0.5em] text-metadata">
+      <div className="w-full bg-[#f6f6f6] border-b border-gray-100 py-4 md:py-8 px-8 md:px-16 flex justify-between items-center shrink-0">
+        <h1 className="text-[10px] md:text-base lg:text-lg font-black uppercase tracking-[0.4em] md:tracking-[0.6em] text-metadata">
           Aktuality ze školních médií
         </h1>
-        <p className="text-xs font-black uppercase tracking-widest text-brand-red">
+        <p className="text-[10px] md:text-base lg:text-lg font-black uppercase tracking-widest text-brand-red">
           Čtěte na webu školy
         </p>
       </div>
@@ -99,7 +99,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-full h-full max-w-7xl max-h-[85vh]"
+              className="w-full h-full max-w-[1600px] max-h-[82vh]"
             >
               <NewsCard post={posts[currentIndex]} index={currentIndex} />
             </motion.div>
@@ -124,15 +124,28 @@ export default function App() {
       </main>
       
       {/* Static banner with QR Code */}
-      <div className="w-full bg-[#111827] text-white py-6 px-12 flex items-center justify-between shrink-0">
+      <div className="w-full bg-[#111827] text-white py-4 md:py-8 LG:py-10 px-8 md:px-16 lg:px-20 flex items-center justify-between shrink-0">
         <div className="flex flex-col">
-          <h2 className="text-xl font-black uppercase tracking-[0.2em] mb-1">Více informací na webu</h2>
-          <p className="text-gray-400 font-bold uppercase tracking-[0.15em] text-xs">smysluplnaskola.cz/skolni-media</p>
+          <h2 className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-[0.2em] mb-1">Více informací na webu</h2>
+          <p className="text-gray-400 font-bold uppercase tracking-[0.15em] text-[10px] md:text-sm lg:text-base">smysluplnaskola.cz/skolni-media</p>
         </div>
-        <div className="bg-white p-2 rounded-xl shadow-lg">
+        <div className="bg-white p-1.5 md:p-3 rounded-xl lg:rounded-2xl shadow-2xl">
           <QRCodeSVG 
             value="https://smysluplnaskola.cz/skolni-media" 
-            size={90}
+            size={70}
+            className="md:hidden"
+            level="H"
+          />
+          <QRCodeSVG 
+            value="https://smysluplnaskola.cz/skolni-media" 
+            size={100}
+            className="hidden md:block lg:hidden"
+            level="H"
+          />
+          <QRCodeSVG 
+            value="https://smysluplnaskola.cz/skolni-media" 
+            size={140}
+            className="hidden lg:block"
             level="H"
           />
         </div>
@@ -147,39 +160,39 @@ function NewsCard({ post }: { post: NewsPost; index: number }) {
 
   return (
     <div
-      className="flex flex-col md:flex-row h-full w-full bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-2xl"
+      className="flex flex-col md:flex-row h-full w-full bg-white border border-gray-100 rounded-[3rem] overflow-hidden shadow-2xl"
       id={`news-card-${post.id}`}
     >
-      <div className="md:w-[45%] h-full overflow-hidden">
+      <div className="md:w-1/2 h-full overflow-hidden">
         <img 
           src={imageUrl} 
           alt={post.title} 
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=1200`;
+            (e.target as HTMLImageElement).src = `https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=1600`;
           }}
         />
       </div>
 
-      <div className="flex flex-col p-12 md:p-20 md:w-[55%] justify-center">
-        <div className="mb-6">
-          <div className="w-2 h-8 bg-brand-red inline-block mr-5 align-middle"></div>
-          <span className="text-sm font-black uppercase tracking-[0.3em] text-metadata align-middle">
+      <div className="flex flex-col p-16 md:p-24 lg:p-32 md:w-1/2 justify-center">
+        <div className="mb-8">
+          <div className="w-3 h-10 bg-brand-red inline-block mr-6 align-middle"></div>
+          <span className="text-base lg:text-lg font-black uppercase tracking-[0.4em] text-metadata align-middle">
             Nepřehlédněte
           </span>
         </div>
         
-        <h2 className="mb-10 font-sans text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-charcoal">
+        <h2 className="mb-10 font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-charcoal">
           {post.title}
         </h2>
         
-        <p className="mb-12 text-xl md:text-2xl font-medium leading-relaxed text-metadata/80 line-clamp-5">
+        <p className="mb-12 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed text-metadata/80 line-clamp-4">
           {stripHtml(post.perex)}
         </p>
         
-        <div className="mt-8 pt-10 border-t border-gray-100">
-          <div className="flex items-center gap-4 text-xl font-bold text-metadata/60 uppercase tracking-widest">
+        <div className="mt-8 pt-10 border-t-2 border-gray-100">
+          <div className="flex items-center gap-4 text-xl lg:text-2xl font-black text-metadata/60 uppercase tracking-[0.2em]">
             <span>{formatDate(post.date)}</span>
           </div>
         </div>
