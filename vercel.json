@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/news",
+      "destination": "/api/news"
+    },
+    {
+      "source": "/proxy-img",
+      "destination": "/api/proxy-img"
+    }
+  ]
+}

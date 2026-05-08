@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Calendar, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { ApiResponse, NewsPost } from './types';
 
@@ -180,7 +180,6 @@ function NewsCard({ post }: { post: NewsPost; index: number }) {
         
         <div className="mt-8 pt-10 border-t border-gray-100">
           <div className="flex items-center gap-4 text-xl font-bold text-metadata/60 uppercase tracking-widest">
-            <Calendar className="h-6 w-6 text-brand-red/50" />
             <span>{formatDate(post.date)}</span>
           </div>
         </div>
