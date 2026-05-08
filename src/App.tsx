@@ -110,7 +110,7 @@ export default function App() {
 
         {/* Progress indicators for signage */}
         {posts.length > 1 && (
-          <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3">
+          <div className="absolute right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-10">
             {posts.map((_, idx) => (
               <div 
                 key={idx}
@@ -126,7 +126,7 @@ export default function App() {
       {/* Static banner with QR Code */}
       <div className="w-full bg-[#111827] text-white py-3 md:py-6 px-8 md:px-16 lg:px-20 flex items-center justify-between shrink-0">
         <div className="flex flex-col">
-          <h2 className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-[0.2em] mb-1">Více informací na webu</h2>
+          <h2 className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-[0.2em] mb-1">Více novinek ze školy na webu</h2>
           <p className="text-gray-400 font-bold uppercase tracking-[0.15em] text-[10px] md:text-sm lg:text-base">smysluplnaskola.cz/skolni-media</p>
         </div>
         <div className="bg-white p-1.5 md:p-3 rounded-xl lg:rounded-2xl shadow-2xl">
