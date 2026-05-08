@@ -69,7 +69,7 @@ export default function App() {
         </p>
       </div>
 
-      <main className="flex-grow relative flex items-center justify-center p-6 md:p-12 lg:p-20">
+      <main className="flex-1 relative flex items-center justify-center p-4 md:p-8 overflow-hidden">
         <AnimatePresence mode="wait">
           {loading ? (
             <motion.div 
@@ -95,11 +95,11 @@ export default function App() {
           ) : posts.length > 0 ? (
             <motion.div
               key={posts[currentIndex].id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-full h-full max-w-[1600px] max-h-[82vh]"
+              className="w-full h-full max-w-[1600px] flex items-center justify-center"
             >
               <NewsCard post={posts[currentIndex]} index={currentIndex} />
             </motion.div>
@@ -160,10 +160,10 @@ function NewsCard({ post }: { post: NewsPost; index: number }) {
 
   return (
     <div
-      className="flex flex-col md:flex-row w-full bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-2xl"
+      className="flex flex-col md:flex-row w-full h-full max-h-full bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-2xl"
       id={`news-card-${post.id}`}
     >
-      <div className="md:w-[45%] aspect-[3/2] md:aspect-auto overflow-hidden">
+      <div className="md:w-[45%] h-full shrink-0 overflow-hidden bg-gray-50 flex items-center justify-center">
         <img 
           src={imageUrl} 
           alt={post.title} 
@@ -175,23 +175,23 @@ function NewsCard({ post }: { post: NewsPost; index: number }) {
         />
       </div>
 
-      <div className="flex flex-col p-10 md:p-12 lg:p-16 md:w-[55%] justify-center">
-        <div className="mb-4">
+      <div className="flex flex-col p-8 md:p-12 lg:p-16 md:w-[55%] justify-center min-h-0 overflow-hidden">
+        <div className="mb-4 shrink-0">
           <div className="w-1.5 h-6 bg-brand-red inline-block mr-4 align-middle"></div>
           <span className="text-xs lg:text-sm font-black uppercase tracking-[0.4em] text-metadata align-middle">
             Nepřehlédněte
           </span>
         </div>
         
-        <h2 className="mb-6 font-sans text-xl sm:text-2xl md:text-2xl lg:text-3xl font-black leading-[1.2] tracking-tight text-charcoal">
+        <h2 className="mb-6 font-sans text-xl sm:text-2xl md:text-2xl lg:text-3xl font-black leading-[1.2] tracking-tight text-charcoal shrink-0 line-clamp-3">
           {post.title}
         </h2>
         
-        <p className="mb-8 text-sm sm:text-base md:text-base lg:text-lg font-medium leading-relaxed text-metadata/80 line-clamp-3">
+        <p className="mb-8 text-sm sm:text-base md:text-base lg:text-lg font-medium leading-relaxed text-metadata/80 line-clamp-4">
           {stripHtml(post.perex)}
         </p>
         
-        <div className="mt-4 pt-6 border-t-2 border-gray-100">
+        <div className="mt-auto pt-6 border-t-2 border-gray-100 shrink-0">
           <div className="flex items-center gap-4 text-lg lg:text-xl font-black text-metadata/60 uppercase tracking-[0.2em]">
             <span>{formatDate(post.date)}</span>
           </div>
